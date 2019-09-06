@@ -1,0 +1,17 @@
+[mysqld]
+
+query_cache_limit               = 128K
+query_cache_size                = 32M
+query_cache_type                = ON
+
+table_open_cache                      = 1000
+read_buffer_size                      = 2M
+read_rnd_buffer_size                  = 1M
+thread_cache_size                     = 80
+join_buffer_size                      = 2M
+sort_buffer_size                      = 2M
+max_connections                       = 400
+tmp_table_size                        = 32M
+max_heap_table_size                   = 32M
+table_definition_cache                = 1000
+performance_schema                    = OFF
