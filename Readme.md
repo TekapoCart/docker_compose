@@ -3,6 +3,7 @@
 **install mkcert**
 
 ```
+mkdir docker_compose/ca
 cd docker_compose/ca
 brew install mkcert
 brew install nss
