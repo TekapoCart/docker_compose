@@ -16,17 +16,17 @@ services:
   www:
     image: asia.gcr.io/tekapocart/www
     volumes:
-      - ./html/:/var/www/html/
+      - ./volumes/www:/var/www
       - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
       # - ./logs/www:/var/log/
     environment:
-      - TC_DOMAIN=tekapocart.dev
+      - TC_DOMAIN=tekapocart.devel
       - TC_DOMAIN_PORT=4443
       - DB_SERVER=db
       - DB_NAME=tekapocart
       - DB_PASSWD=12345678
       - DB_RT_PASSWD=12345678
-      - TC_BRANCH=develop
+      # - TC_BRANCH=develop
     depends_on:
       - db
     user: "1001"
@@ -40,7 +40,7 @@ services:
       - ./logs/nginx:/var/log/nginx
       - ./ca:/etc/ssl
     ports:
-      - "8080:80"
+      - "8880:80"
       - "4443:443"
     depends_on:
       - www

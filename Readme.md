@@ -8,14 +8,14 @@ cd docker_compose/ca
 brew install mkcert
 brew install nss
 mkcert -install
-mkcert tekapocart.dev
+mkcert tekapocart.devel
 ```
 
 **modify host file**
 
 ```
 sudo vim /etc/hosts
-127.0.0.1       tekapocart.dev
+127.0.0.1       tekapocart.devel
 ```
 
 **run docker-compose**
@@ -26,7 +26,7 @@ docker-compose up
 ```
 
 ```
-curl https://tekapocart.dev:4443
+curl https://tekapocart.devel:4443
 ```
 
 
