@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  db:
+    image: mariadb:latest
+    volumes:
+      - ./volumes/db:/var/lib/mysql
+      - ./config_files/db/tc.cnf:/etc/mysql/conf.d/tc.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=56XABFAL%
+      - MYSQL_DATABASE=tekapocart
+      - MYSQL_USER=tekapocart
+      - MYSQL_PASSWORD=56XABFAL%
+    ports:
+      - "3306:3306"
+  tekapocart-fpm:
+    image: asia.gcr.io/tekapocart/fpm:latest
+    volumes:
+      - ./volumes/www:/var/www
+      # - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
+      # - ./config_files/fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    environment:
+      - TC_DOMAIN=mono.dodoke.net
+      - ADMIN_MAIL=hi@tekapo.io
+      - DB_SERVER=db
+      - DB_NAME=tekapocart
+      - DB_PASSWD=56XABFAL%
+      - DB_RT_PASSWD=56XABFAL%
+      # - TC_BRANCH=develop
+    depends_on:
+      - db
+    user: "33:33"
+  httpd:
+    image: asia.gcr.io/tekapocart/httpd:latest
+    volumes:
+      - ./volumes/www:/var/www
+      - ./logs/httpd:/var/log/apache2
+      - /etc/letsencrypt:/etc/letsencrypt
+      # - ./config_files/httpd/mpm_event.conf:/usr/local/apache2/conf/extra/mpm_event.conf
+    environment:
+      - ADMIN_MAIL=hi@tekapo.io
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - tekapocart-fpm

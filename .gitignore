@@ -2,5 +2,4 @@
 
 ca/*.pem
 
-volumes/db/*
-volumes/www/*
+volumes/
