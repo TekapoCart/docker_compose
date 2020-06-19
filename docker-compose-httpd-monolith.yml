@@ -12,7 +12,7 @@ services:
       - MYSQL_PASSWORD=12345678
     ports:
       - "3306:3306"
-  tekapocart-fpm:
+  fpm:
     image: asia.gcr.io/tekapocart/fpm:latest
     volumes:
       - ./volumes/www:/var/www
@@ -26,6 +26,8 @@ services:
       - DB_PASSWD=12345678
       - DB_RT_PASSWD=12345678
       # - TC_BRANCH=develop
+    ports:
+      - "9000:9000"
     depends_on:
       - db
   httpd:
