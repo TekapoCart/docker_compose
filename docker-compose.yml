@@ -21,7 +21,7 @@ services:
       # - ./logs/www:/var/log/
     environment:
       - TC_DOMAIN=shop.dodoke.net
-      - TC_DOMAIN_PORT=4443
+      - TC_DOMAIN_PORT=443
       - ADMIN_MAIL=hi@tekapo.io
       - DB_SERVER=db
       - DB_NAME=tekapocart
