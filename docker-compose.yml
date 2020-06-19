@@ -20,7 +20,7 @@ services:
       - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
       # - ./logs/www:/var/log/
     environment:
-      - TC_DOMAIN=tekapocart.devel
+      - TC_DOMAIN=shop.dodoke.net
       - TC_DOMAIN_PORT=4443
       - DB_SERVER=db
       - DB_NAME=tekapocart
