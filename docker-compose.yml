@@ -12,7 +12,7 @@ services:
       - MYSQL_USER=tekapocart
       - MYSQL_PASSWORD=12345678
     ports:
-      - "4306:3306"
+      - "3306:3306"
   www:
     image: asia.gcr.io/tekapocart/www
     volumes:
@@ -40,7 +40,7 @@ services:
       - ./logs/nginx:/var/log/nginx
       - ./ca:/etc/ssl
     ports:
-      - "8880:80"
-      - "4443:443"
+      - "80:80"
+      - "443:443"
     depends_on:
       - www
