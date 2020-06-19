@@ -39,7 +39,8 @@ services:
       - ./config_files/nginx/timeout.conf:/etc/nginx/conf.d/timeout.conf
       - ./config_files/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./logs/nginx:/var/log/nginx
-      - ./ca:/etc/ssl
+      # - ./ca:/etc/ssl
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
