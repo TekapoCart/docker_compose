@@ -7,26 +7,25 @@ services:
       - ./config_files/db/tc.cnf:/etc/mysql/conf.d/tc.cnf
       # - ./logs/db:/var/log/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=12345678
-      - MYSQL_DATABASE=tekapocart
-      - MYSQL_USER=tekapocart
-      - MYSQL_PASSWORD=12345678
+      - MYSQL_ROOT_PASSWORD=${DB_RT_PASSWD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_NAME}
+      - MYSQL_PASSWORD=${DB_PASSWD}
     ports:
       - "3306:3306"
   www:
     image: asia.gcr.io/tekapocart/www
     volumes:
       - ./volumes/www2:/var/www
-      - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
+      # - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
       # - ./logs/www:/var/log/
     environment:
-      - TC_DOMAIN=shop.dodoke.net
-      - TC_DOMAIN_PORT=443
-      - ADMIN_MAIL=hi@tekapo.io
+      - TC_DOMAIN=${TC_DOMAIN}
+      - ADMIN_MAIL=${ADMIN_MAIL}
       - DB_SERVER=db
-      - DB_NAME=tekapocart
-      - DB_PASSWD=12345678
-      - DB_RT_PASSWD=12345678
+      - DB_NAME=${DB_NAME}
+      - DB_PASSWD=${DB_PASSWD}
+      - DB_RT_PASSWD=${DB_RT_PASSWD}
       # - TC_BRANCH=develop
     depends_on:
       - db
