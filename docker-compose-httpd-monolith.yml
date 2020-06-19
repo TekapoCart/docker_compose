@@ -5,6 +5,7 @@ services:
     volumes:
       - ./volumes/db:/var/lib/mysql
       - ./config_files/db/tc.cnf:/etc/mysql/conf.d/tc.cnf
+      # - ./logs/db:/var/log/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=12345678
       - MYSQL_DATABASE=tekapocart
@@ -18,6 +19,7 @@ services:
       - ./volumes/www:/var/www
       # - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
       # - ./config_files/fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      # - ./logs/www:/var/log/
     environment:
       - TC_DOMAIN=shop.dodoke.net
       - ADMIN_MAIL=hi@tekapo.io
