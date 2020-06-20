@@ -35,12 +35,14 @@ services:
     image: asia.gcr.io/tekapocart/nginx:latest
     volumes:
       - ./volumes/www2:/var/www
-      - ./config_files/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./config_files/nginx/timeout.conf:/etc/nginx/conf.d/timeout.conf
-      - ./config_files/nginx/nginx.conf:/etc/nginx/nginx.conf
+      # - ./config_files/nginx/nginx.conf:/etc/nginx/nginx.conf
+      # - ./config_files/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      # - ./config_files/nginx/timeout.conf:/etc/nginx/conf.d/timeout.conf
       - ./logs/nginx:/var/log/nginx
       # - ./ca:/etc/ssl
       - /etc/letsencrypt:/etc/letsencrypt
+    environment:
+      - TC_DOMAIN=${TC_DOMAIN}
     ports:
       - "80:80"
       - "443:443"
