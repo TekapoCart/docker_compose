@@ -9,7 +9,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_RT_PASSWD}
       - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWD}
     ports:
       - "3306:3306"
