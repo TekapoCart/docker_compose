@@ -14,7 +14,7 @@ services:
     ports:
       - "3306:3306"
   www:
-    image: asia.gcr.io/tekapocart/www
+    image: asia.gcr.io/tekapocart/www:latest
     volumes:
       - ./volumes/www2:/var/www
       # - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
@@ -31,7 +31,7 @@ services:
       - db
     user: "1001"
   nginx:
-    image: nginx:latest
+    image: asia.gcr.io/tekapocart/nginx:latest
     volumes:
       - ./volumes/www2:/var/www
       - ./config_files/nginx/default.conf:/etc/nginx/conf.d/default.conf
