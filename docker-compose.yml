@@ -1,11 +1,15 @@
 version: '3.7'
 services:
+  secrets:
+    db_password:
+      file: db_password.txt
+    db_root_password:
+      file: db_root_password.txt
   db:
     image: mariadb:latest
     volumes:
       - ./volumes/db:/var/lib/mysql
       - ./config_files/db/tc.cnf:/etc/mysql/conf.d/tc.cnf
-      # - ./logs/db:/var/log/mysql
     environment:
       # - MYSQL_ROOT_PASSWORD=${DB_RT_PASSWD}
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
@@ -68,8 +72,3 @@ services:
         max-file: "10"
     depends_on:
       - www
-secrets:
-   db_password:
-     file: db_password.txt
-   db_root_password:
-     file: db_root_password.txt
