@@ -10,9 +10,6 @@ services:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASSWD}
-    secrets:
-      - db_root_password
-      - db_password
     ports:
       - "3306:3306"
     logging:
@@ -33,8 +30,6 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_PASSWD=${DB_PASSWD}
       # - TC_BRANCH=develop
-    secrets:
-      - db_password
     ports:
       - "9000:9000"
     logging:
