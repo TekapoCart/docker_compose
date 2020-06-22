@@ -18,6 +18,17 @@ sudo vim /etc/hosts
 127.0.0.1       tekapocart.devel
 ```
 
+**modify .env**
+
+```
+TC_DOMAIN=ToBeDefined
+ADMIN_MAIL=ToBeDefined
+DB_NAME=tekapocart
+DB_USER=tekapocart
+DB_PASSWD=ToBeDefined
+DB_RT_PASSWD=ToBeDefined
+```
+
 **run docker-compose**
 
 ```
