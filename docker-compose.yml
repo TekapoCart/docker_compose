@@ -3,7 +3,7 @@ services:
   db:
     image: mariadb:latest
     volumes:
-      - ./volumes/db:/var/lib/mysql
+      - /var/volumes/db:/var/lib/mysql
       - ./config_files/db/tc.cnf:/etc/mysql/conf.d/tc.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_RT_PASSWD}
@@ -20,7 +20,7 @@ services:
   www:
     image: asia.gcr.io/tekapocart/www:latest
     volumes:
-      - ./volumes/html:/var/www/html
+      - /var/volumes/html:/var/www/html
       # - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
       # - ./config_files/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
     environment:
@@ -43,7 +43,7 @@ services:
   nginx:
     image: asia.gcr.io/tekapocart/nginx:latest
     volumes:
-      - ./volumes/html:/var/www/html
+      - /var/volumes/html:/var/www/html
       # - ./config_files/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt:/etc/letsencrypt
       # - ./ca:/etc/ssl
