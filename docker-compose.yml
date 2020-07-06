@@ -18,7 +18,7 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
-  www:
+  app:
     image: asia.gcr.io/tekapocart/www:latest
     volumes:
       - /var/volumes/html:/var/www/html
@@ -52,6 +52,7 @@ services:
     environment:
       - TC_DOMAIN=${TC_DOMAIN}
       - ADMIN_MAIL=${ADMIN_MAIL}
+      # - TC_VARNISH=1
     ports:
       - "80:80"
       - "443:443"
@@ -61,4 +62,17 @@ services:
         max-size: "10m"
         max-file: "10"
     depends_on:
-      - www
+      - app
+  # varnish:
+  #   image: asia.gcr.io/tekapocart/varnish:latest
+  #   tmpfs:
+  #     - /var/lib/varnish:exec
+  #   ports:
+  #     - "6081:6081"
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "10"
+  #   depends_on:
+  #     - nginx
