@@ -19,7 +19,7 @@ services:
         max-size: "10m"
         max-file: "10"
   app:
-    image: asia.gcr.io/tekapocart/www:latest
+    image: asia.gcr.io/tekapocart/app:latest
     volumes:
       - /var/volumes/html:/var/www/html
       # - ./config_files/php/tc.ini:/usr/local/etc/php/conf.d/tc.ini
