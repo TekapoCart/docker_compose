@@ -26,6 +26,9 @@ services:
       # - ./config_files/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
     environment:
       - TC_DOMAIN=${TC_DOMAIN}
+      # - TC_DOMAIN_2=${TC_DOMAIN_2}
+      # - TC_DOMAIN_3=${TC_DOMAIN_3}
+      # - TC_DOMAIN_4=${TC_DOMAIN_4}
       - ADMIN_MAIL=${ADMIN_MAIL}
       - DB_SERVER=db
       - DB_NAME=${DB_NAME}
@@ -51,6 +54,10 @@ services:
       # - ./ca:/etc/ssl
     environment:
       - TC_DOMAIN=${TC_DOMAIN}
+      # - TC_DOMAIN_2=${TC_DOMAIN_2}
+      # - TC_DOMAIN_3=${TC_DOMAIN_3}
+      # - TC_DOMAIN_4=${TC_DOMAIN_4}
+      # - CDN_DOMAIN=${CDN_DOMAIN}
       - ADMIN_MAIL=${ADMIN_MAIL}
       # - TC_VARNISH=1
     ports:
